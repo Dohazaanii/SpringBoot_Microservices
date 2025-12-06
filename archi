@@ -1,0 +1,26 @@
+┌──────────────┐
+                │   EUREKA     │ ← Annuaire téléphonique
+                │   :8761      │   (pas de communication)
+                └──────┬───────┘
+                       │
+                "Je m'enregistre ici !"
+                       │
+        ┌──────────────┼──────────────┐
+        │              │              │
+        ▼              ▼              ▼
+    ┌────────┐    ┌────────┐    ┌──────────┐
+    │ Stock  │    │Commerc.│    │  Vente   │
+    │ :8082  │    │ :8081  │    │  :8080   │
+    └────────┘    └────────┘    └─────┬────┘
+                                       │
+                                       │
+                    "Eureka, donne-moi l'adresse de STOCK"
+                                       │
+                    Eureka répond: "Stock = localhost:8082"
+                                       │
+                                       ▼
+                            Appelle http://localhost:8082/...
+
+✅ Vente demande à Eureka où trouver les services
+✅ Eureka donne les adresses
+✅ Vente appelle directement les microservices
