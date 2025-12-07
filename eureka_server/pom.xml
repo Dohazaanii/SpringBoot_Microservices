@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.tp</groupId>
-    <artifactId>demo-eureka</artifactId>
+    <artifactId>eureka_server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo-eureka</name>
-    <description>demo-eureka</description>
+    <name>eureka_server</name>
+    <description>eureka_server</description>
     <url/>
     <licenses>
         <license/>
