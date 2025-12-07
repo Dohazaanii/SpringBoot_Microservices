@@ -5,7 +5,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "Produits_Stock")
-public class ProduitsStock {
+public class ProduitStock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codeStock;
