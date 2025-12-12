@@ -8,15 +8,16 @@ import com.tp.gestion_commercial.repository.TousCommandesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/commercial")
+
 public class CommercialController {
 
     @Autowired
-    private ProduitsPrixRepository produitsPrixRepository;
+    private   ProduitsPrixRepository produitsPrixRepository;
 
     @Autowired
     private TousCommandesRepository tousCommandesRepository;
@@ -24,6 +25,7 @@ public class CommercialController {
 
     @GetMapping("/produits")
     public List<ProduitsPrix> getProduits() {
+
         return produitsPrixRepository.findAll();
     }
 
@@ -31,5 +33,18 @@ public class CommercialController {
     @PostMapping("/tous-commandes")
     public TousCommandes ajouterCommande(@RequestBody TousCommandes commande) {
         return tousCommandesRepository.save(commande);
+    }
+
+    @PostMapping("/ajouter-commande")
+    public TousCommandes ajouterCommande(@RequestParam String codeCmd,@RequestParam String client, @RequestParam String codePdt, @RequestParam int qteCmd, @RequestParam String dateCmd)
+        {
+            TousCommandes cmd = new TousCommandes(codeCmd,
+                    client,
+                    codePdt,
+                    qteCmd,
+                    LocalDate.parse(dateCmd)
+            );
+
+        return tousCommandesRepository.save(cmd);
     }
 }
